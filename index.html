@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Matrix</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				color: #ffffff;
+				font-family:Monospace;
+				font-size:13px;
+				text-align:center;
+				font-weight: bold;
+
+				background-color: #000000;
+				margin: 0px;
+				overflow: hidden;
+			}
+
+			#info {
+				position: absolute;
+				top: 0px; width: 100%;
+				padding: 5px;
+			}
+
+			a {
+				color: #ffffff;
+			}
+
+			#webglmessage a { color:#da0 }
+		</style>
+	</head>
+	<body onload="getData()" >
+		
+		<div id="container"></div>
+		<div id="info"><a href="" target="_blank" rel="noopener">csernozjom toursit</a> 
+		- </div>
+
+		<script src="js/three.js"></script>
+		
+		<script src="js/WebGL.js"></script>
+		<script src="js/libs/stats.js"></script>
+		<script src="js/libs/OrbitControls.js"></script>
+		<script src="js/matrix_disp.js"></script>		
+		
+		
+		<audio id="audio" preload="auto" src="audio/audio.mp3"></audio>
+		
+		<script>
+			
+			var getData = function(){
+				var url = "https://unfinished-sentenc.github.io/data/anim_big.json";
+				fetch(url).then(response => response.json()).then(r => startAnim(r));
+			}
+			
+			var startAnim = function(r){
+				var disp = new matrix_disp(13, 16);
+				disp.init();
+				disp.play(r);
+				//disp.animate();
+			}
+			
+		</script>
+
+	</body>
+</html>
